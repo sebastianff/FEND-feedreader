@@ -63,13 +63,26 @@ $(function() {
          */
          it('hidden default', function() {
             var isHidden = $(".menu-icon-link").hasClass( "hidden" );
-            expect(isHidden).not.toBe(true);
+            expect(isHidden).toBe(false);
         });
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+          it('menu visible', function() {
+            var bodyHidden = $("body").hasClass( "menu-hidden" );
+            var menuIcon = $(".menu-icon-link");
+            menuIcon.click();
+            expect(bodyHidden).toBe(true);
+        });
+
+          it('mennu hidden', function() {
+            var bodyHidden = $("body").hasClass( "menu-hidden" );
+            var menuIcon = $(".menu-icon-link");
+            menuIcon.click();
+            expect(bodyHidden).toBe(false);
+        });
     });
     /* TODO: Write a new test suite named "Initial Entries" */
 
