@@ -108,21 +108,22 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        var seboN;
+        var result1,result2;
+
         beforeEach(function(done) {
-            loadFeed(0,done);
+            loadFeed(0,function(){
+                result1 = $( ".feed" ).html();
+                done();
+            });
         });
+
         it('makes sense', function() {
-                var seboN = $( ".feed" ).html();
-                console.log(seboN);
+            loadFeed(1,function(){
+                result2 = $( ".feed" ).html();
+                done();
             });
-        beforeEach(function(done) {
-            loadFeed(0,done);
+            expect(result1).not.toEqual(result2);
+
         });
-        it('makes sense for sure', function() {
-                var seboD = $( ".feed" ).html();
-                console.log(seboD);
-                expect(seboN).not.toEqual(seboD);
-            });
     });
 }());
