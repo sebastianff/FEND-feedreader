@@ -111,14 +111,14 @@ $(function() {
         var result1,result2;
 
         beforeEach(function(done) {
-            loadFeed(0,function(){
+            loadFeed(1,function(){
                 result1 = $( ".feed" ).html();
                 done();
             });
         });
 
         it('Loads different feeds', function() {
-            loadFeed(1,function(){
+            loadFeed(0,function(){
                 result2 = $( ".feed" ).html();
                 done();
             });
