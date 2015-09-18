@@ -21,7 +21,7 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
-        it('are defined', function() {
+        it('Are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
@@ -31,7 +31,7 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         it('links are defined', function() {
+        it('Links are defined', function() {
             for(var i = 0; i < allFeeds.length; i++){
             expect(allFeeds[i].url).toBeDefined();
             expect(allFeeds[i].url).not.toBe("");
@@ -44,7 +44,7 @@ $(function() {
          * and that the name is not empty.
          */
 
-         it('names are defined', function() {
+        it('Names are defined', function() {
             for(var i = 0; i < allFeeds.length; i++){
             expect(allFeeds[i].name).toBeDefined();
             expect(allFeeds[i].name).not.toBe("");
@@ -61,7 +61,7 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-         it('hidden default', function() {
+        it('Hidden by default', function() {
             var isHidden = $(".menu-icon-link").hasClass( "hidden" );
             expect(isHidden).toBe(false);
         });
@@ -70,14 +70,14 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-          it('menu visible', function() {
+        it('Visible on click', function() {
             var bodyHidden = $("body").hasClass( "menu-hidden" );
             var menuIcon = $(".menu-icon-link");
             menuIcon.click();
             expect(bodyHidden).toBe(true);
         });
 
-          it('mennu hidden', function() {
+        it('Hidden on second click', function() {
             var bodyHidden = $("body").hasClass( "menu-hidden" );
             var menuIcon = $(".menu-icon-link");
             menuIcon.click();
@@ -92,11 +92,11 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-         beforeEach(function(done) {
+        beforeEach(function(done) {
             loadFeed(0,done);
         });
 
-        it('has entries', function() {
+        it('Has entries on first load', function() {
                 var sebo = $( "article" ).hasClass( "entry" );
                 console.log(sebo);
                 expect(sebo).toBe(true);
@@ -117,7 +117,7 @@ $(function() {
             });
         });
 
-        it('makes sense', function() {
+        it('Loads different feeds', function() {
             loadFeed(1,function(){
                 result2 = $( ".feed" ).html();
                 done();
