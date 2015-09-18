@@ -32,9 +32,9 @@ $(function() {
          * and that the URL is not empty.
          */
         it('Links are defined', function() {
-            for(var i = 0; i < allFeeds.length; i++){
+            for(var i = 0; i < allFeeds.length; i++){//Set a loop to go trough the array
             expect(allFeeds[i].url).toBeDefined();
-            expect(allFeeds[i].url).not.toBe("");
+            expect(allFeeds[i].url).not.toBe("");//Check if properties are defined with a jasmine matcher
             }
         });
 
@@ -43,15 +43,13 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-
         it('Names are defined', function() {
-            for(var i = 0; i < allFeeds.length; i++){
+            for(var i = 0; i < allFeeds.length; i++){//Set a loop to go trough the array
             expect(allFeeds[i].name).toBeDefined();
-            expect(allFeeds[i].name).not.toBe("");
+            expect(allFeeds[i].name).not.toBe("");//Check if properties are defined with a jasmine matcher
             }
         });
     });
-
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
@@ -62,9 +60,10 @@ $(function() {
          * hiding/showing of the menu element.
          */
         it('Hidden by default', function() {
-            var isHidden = $(".menu-icon-link").hasClass( "hidden" );
+            var isHidden = $(".menu-icon-link").hasClass( "hidden" );//Check if the menu icon has a class that makes it hidden
             expect(isHidden).toBe(false);
         });
+
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
@@ -74,18 +73,20 @@ $(function() {
             var bodyHidden = $("body").hasClass( "menu-hidden" );
             var menuIcon = $(".menu-icon-link");
             menuIcon.click();
-            expect(bodyHidden).toBe(true);
+            expect(bodyHidden).toBe(true);//Check the hidden class of the menu on second click
         });
 
         it('Hidden on second click', function() {
             var bodyHidden = $("body").hasClass( "menu-hidden" );
             var menuIcon = $(".menu-icon-link");
             menuIcon.click();
-            expect(bodyHidden).toBe(false);
+            expect(bodyHidden).toBe(false);//Check the hidden class of the menu on second click
         });
     });
+
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Inital Entries', function() {
+        var hasEntry;
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -93,15 +94,17 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         beforeEach(function(done) {
-            loadFeed(0,done);
+            loadFeed(0,function(){
+                hasEntry = $( "article" ).hasClass( "entry" );//Set up a function to set the hasEentry variable value when the load function is done
+                done();
+            });
         });
 
         it('Has entries on first load', function() {
-                var sebo = $( "article" ).hasClass( "entry" );
-                console.log(sebo);
-                expect(sebo).toBe(true);
+            expect(hasEntry).toBe(true);//Check if the entry class is present
             });
         });
+
     /* TODO: Write a new test suite named "New Feed Selection"*/
     describe('New Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
@@ -111,19 +114,20 @@ $(function() {
         var result1,result2;
 
         beforeEach(function(done) {
-            loadFeed(0,function(){
-                result1 = $( ".feed" ).html();
+            loadFeed(1,function(){
+                result1 = $( ".feed" ).html();//Add the html of the first feed result to the variable
                 done();
             });
         });
 
         it('Loads different feeds', function() {
-            loadFeed(1,function(){
-                result2 = $( ".feed" ).html();
+            loadFeed(0,function(){
+                result2 = $( ".feed" ).html();//Add the html of the second feed result to the variable
                 done();
             });
-            expect(result1).not.toEqual(result2);
+            expect(result1).not.toEqual(result2);//Check if they are different
 
         });
     });
 }());
+
