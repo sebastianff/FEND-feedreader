@@ -97,9 +97,8 @@ $(function() {
         });
 
         it('Has entries on first load', function() {
-                var sebo = $( "article" ).hasClass( "entry" );
-                console.log(sebo);
-                expect(sebo).toBe(true);
+                var hasEntries = $( "article" ).hasClass( "entry" );
+                expect(hasEntries).toBe(true);
             });
         });
     /* TODO: Write a new test suite named "New Feed Selection"*/
