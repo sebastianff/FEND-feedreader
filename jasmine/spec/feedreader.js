@@ -116,13 +116,12 @@ $(function() {
             });
         });
 
-        it('Loads different feeds', function() {
+        it('Loads different feeds', function(done) {
             loadFeed(0,function(){
                 result2 = $( ".feed" ).html();
+                expect(result1).not.toEqual(result2);
                 done();
             });
-            expect(result1).not.toEqual(result2);
-
         });
     });
 }());
