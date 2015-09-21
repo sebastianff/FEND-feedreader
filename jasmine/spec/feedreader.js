@@ -71,17 +71,17 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('Visible on click', function() {
-            var bodyHidden = $("body").hasClass( "menu-hidden" );
             var menuIcon = $(".menu-icon-link");
             menuIcon.click();
-            expect(bodyHidden).toBe(true);
+            var bodyHidden = $("body").hasClass( "menu-hidden" );
+            expect(bodyHidden).toBe(false);
         });
 
         it('Hidden on second click', function() {
-            var bodyHidden = $("body").hasClass( "menu-hidden" );
             var menuIcon = $(".menu-icon-link");
             menuIcon.click();
-            expect(bodyHidden).toBe(false);
+            var bodyHidden = $("body").hasClass( "menu-hidden" );
+            expect(bodyHidden).toBe(true);
         });
     });
     /* TODO: Write a new test suite named "Initial Entries" */
