@@ -46,8 +46,8 @@ $(function() {
 
         it('Names are defined', function() {
             for(var i = 0; i < allFeeds.length; i++){
-            expect(allFeeds[i].name).toBeDefined();
-            expect(allFeeds[i].name).not.toBe("");
+                expect(allFeeds[i].name).toBeDefined();
+                expect(allFeeds[i].name).not.toBe("");
             }
         });
     });
