@@ -1,6 +1,6 @@
 Author: Sebastian Farago</br>
 Title:Feedreader Testing</br>
-Link:http://sebastianff.github.io/frontend-nanodegree-feedreader/
+Link:http://sebastianff.github.io/FEND-feedreader
 
 The app is started by running the index.html file in your browser.</br>
 The app will load the inital feeds.</br>
